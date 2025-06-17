@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (isset($_SESSION['role'])) {
+	if ($_SESSION['role'] === "admin") {
+		header("Location: admin.php");
+	} else {
+		header("Location: home.php");
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,16 +25,17 @@
 
 <body>
 	<div class="container col-4 position-absolute top-50 start-50 translate-middle">
-		<form action="" novalidate>
+		<div id="liveAlertPlaceholder"></div>
+		<form action="" method="" class="needs-validation" novalidate>
 			<label for="" class="form-label fs-5 fw-bold">Log In</label>
 			<div class="form-floating mb-3">
-				<input type="email" class="form-control" id="floatingInput"
+				<input type="email" name="email" class="form-control" id="floatingInput"
 					placeholder="name@example.com" required="">
 				<label for="floatingInput">Email address</label>
 
 			</div>
 			<div class="form-floating">
-				<input type="password" class="form-control" id="floatingPassword"
+				<input name="password" type="password" class="form-control" id="floatingPassword"
 					placeholder="Password">
 				<label for="floatingPassword">Password</label>
 			</div>
@@ -32,7 +44,7 @@
 		</form>
 
 	</div>
-
+	<script src="js/alert.js"></script>
 </body>
 
 </html>

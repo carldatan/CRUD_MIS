@@ -10,7 +10,6 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 foreach ($data as $key => $value) {
 	if ($value === "") {
-
 		echo json_encode(['success' => false]);
 		exit();
 	}

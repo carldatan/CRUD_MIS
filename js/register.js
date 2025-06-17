@@ -14,15 +14,14 @@ function usernameCheck(id) {
 		}
 
 		if (field === 'email') {
-			if (emailCheck(value)) {
-
+			if (!emailCheck(value)) {
+				return;
 			}
-			else return;
 		}
 		clearTimeout(timer);
 
 		timer = setTimeout(() => {
-			fetch('../check_username.php', {
+			fetch('../endpoint/check_username.php', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded'
@@ -144,8 +143,9 @@ function register() {
 		const formData = new FormData(e.target);
 
 		const data = Object.fromEntries(formData.entries());
+		console.log(data);
 
-		fetch('../register.php', {
+		fetch('../endpoint/register.php', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
